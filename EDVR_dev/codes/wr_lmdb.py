@@ -1,14 +1,4 @@
-# import lmdb
-# env = lmdb.open("dataset", map_size=1099511627776)
-# txn = env.begin()
-# # txn.put(key = '1'.encode(), value = 'aaa'.encode())
-# # txn.put(key = '2'.encode(), value = 'bbb'.encode())
-# # txn.put(key = '3'.encode(), value = 'ccc'.encode())
-# # txn.commit()
-# print(txn.get(str(2).encode()))
-# for key, value in txn.cursor():
-#     print (key, value)
-# env.close()
+
 import os
 import os.path as osp
 import sys
@@ -47,7 +37,7 @@ def AI4K(model = 'gt'):
     all_clips_list_path = []
     for x in all_clips_list:
         all_clips_list_path.append(os.path.join(img_folder,x))
-    # print(all_clips_list_path)
+   
 
     keys = []
     all_imgs_path = []
@@ -73,8 +63,7 @@ def AI4K(model = 'gt'):
                     a = (index_imgs_gt + 1) // 7 + 1
                     c = '%.5d' % (index_clip) + '_' + '%.4d' % (a) + '_4'
                     keys.append(c)
-    # data = cv2.imread(all_imgs_path[0],cv2.IMREAD_UNCHANGED)
-    # print(data.shape)
+  
 
     data_size_per_img = cv2.imread(all_imgs_path[0], cv2.IMREAD_UNCHANGED).nbytes
     print('data size per image is: ', data_size_per_img)
@@ -114,7 +103,7 @@ def AI4K(model = 'gt'):
     print('Finish creating lmdb meta info.')
 
 
-    # print(all_img_list)
+   
 if __name__ == "__main__":
     AI4K(model='gt')
     AI4K(model='X4')
